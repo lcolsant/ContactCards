@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" 
+         href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel="stylesheet" type="text/css" 
+         href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+        <link rel="stylesheet" href="style.css">
+        <title>Contact Cards</title>
+        <script type="text/javascript" src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+           
+                $("#addUser").click(function(){
+                    $("#cards").append('<button id="newCard">'+ "<p>" + $('input[name="fname"]').val() + " " + $('input[name="lname"]').val()+ "</p>" + "<p id='back'> "+ $('textarea').val()+"</p>" + '</button>');
+                    $("#fname").val("");
+                    $("#lname").val("");
+                    $("#description").val("");
+                    //Return false to prevent refresh
+                    return false;
+                });
+
+                $(document).on("click", "#newCard", function(){
+                   $(this).children().toggle();
+                })    
+
+            });
+            
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>jQuery - assignment 4</h1>
+            <h3>Adding contact cards to webpage using jQuery</h3>
+            <div id="cards">
+                <!-- jQuery will be used to add the below html -->
+                <!-- <button id="newCard">I'm a new card</button> -->
+
+            </div>
+            <h1>Add User:</h1>
+            <form action="process.php" method="post">
+                <p>
+                    <label>First Name: </label>
+                    <input type="text" id="fname" name="fname" placeholder="First Name">
+                </p>
+                <p>
+                    <label>Last Name: </label>
+                    <input type="text" id="lname" name="lname" placeholder="Last Name">
+                </p>
+                <p>
+                    <label>Description:</label>
+                    <textarea id="description"></textarea>
+                </p>
+
+            </form>
+            <button id="addUser">Add User</button>
+        </div>
+    </body>
+</html>
